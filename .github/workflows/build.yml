@@ -25,7 +25,9 @@ jobs:
       - name: innoextract 
         shell: cmd
         run: |
-          qemu-w64-setup-${{ github.ref_name }}.exe /S /D=%CD%\installation
+          qemu-w64-setup-${{ github.ref_name }}.exe /S /D=%CD%\installation &&^
+          cd installation &&^
+          del qemu-uninstall.exe
           
       - name: Archive Release
         uses: thedoctor0/zip-release@master
